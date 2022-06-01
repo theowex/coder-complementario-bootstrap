@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <title>Yala Subas</title>
+    <?!= include('CSS') ?>
+  </head>
+  <body onload="configurarPagina()">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid" id="contenedorOpciones">
+        <a class="navbar-brand" href="<?= pubUrl ?>">Yala</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="ulOpciones">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= pubUrl ?>">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?= pubUrl ?>?page=FAQ">FAQ</a>
+            </li>
+            
+          </ul>
+
+          
+          <form onsubmit="signup(this)">
+            <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+    <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+    <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+  </svg> Crear cuenta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
+                    <div class="input-group mb-3" id="basic-addon1">
+                      <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+  </svg></span>
+                      <input type="text" class="form-control" placeholder="nombre@ejemplo.com" aria-label="email" aria-describedby="basic-addon1" id="inputEmailSignup" name="inputEmailSignup" required>
+                    </div>
+                    <label for="inputNombres" class="form-label">Nombres y apellidos</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+  </svg></span>
+                      <input type="text" aria-label="nombres" class="form-control" placeholder="Juan Luis" id="inputNombresSignup" name="inputNombresSignup"required>
+                      <input type="text" aria-label="apellidos" class="form-control" placeholder="Perez Torres" id="inputApellidosSignup" name="inputApellidosSignup"required>
+                    </div>
+                    <label for="inputDNI" class="form-label">Documento de identidad</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card-2-front" viewBox="0 0 16 16">
+    <path d="M14 3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z"/>
+    <path d="M2 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+  </svg></span>
+                      <input type="number" class="form-control" placeholder="87654321" aria-label="dni" aria-describedby="basic-addon1" id="inputDNISignup" name="inputDNISignup" required>
+                    </div>
+                    <label for="inputCelular" class="form-label">Celular</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+    <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/>
+    <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+  </svg></span>
+                      <input type="number" class="form-control" placeholder="987654321" aria-label="celular" aria-describedby="basic-addon1" id="inputCelularSignup" name="inputCelularSignup" required>
+                    </div>
+                    <label for="inputDireccion" class="form-label">Dirección</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+    <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+  </svg></span>
+                      <input type="text" class="form-control" placeholder="Aquí se enviarán tus productos :D" aria-label="direccion" aria-describedby="basic-addon1" id="inputDireccionSignup" name="inputDireccionSignup" required>
+                    </div>
+                    <label for="inputUsername" class="form-label">Nombre de usuario</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">@</span>
+                      <input type="text" class="form-control" placeholder="tudibujito_14" aria-label="username" aria-describedby="basic-addon1" id="inputUsernameSignup" name="inputUsernameSignup" required>
+                    </div>
+                    <label for="inputPassword" class="form-label">Contraseña</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-lock" viewBox="0 0 16 16">
+    <path d="M8 5a1 1 0 0 1 1 1v1H7V6a1 1 0 0 1 1-1zm2 2.076V6a2 2 0 1 0-4 0v1.076c-.54.166-1 .597-1 1.224v2.4c0 .816.781 1.3 1.5 1.3h3c.719 0 1.5-.484 1.5-1.3V8.3c0-.627-.46-1.058-1-1.224zM6.105 8.125A.637.637 0 0 1 6.5 8h3a.64.64 0 0 1 .395.125c.085.068.105.133.105.175v2.4c0 .042-.02.107-.105.175A.637.637 0 0 1 9.5 11h-3a.637.637 0 0 1-.395-.125C6.02 10.807 6 10.742 6 10.7V8.3c0-.042.02-.107.105-.175z"/>
+    <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+  </svg></span>
+                      <input type="password" class="form-control" id="inputContraSignup" name="inputContraSignup" required>
+                    </div>
+                    <div class="form-check" id="divCheckSignup">
+                      <input class="form-check-input" type="checkbox" value="" id="inputCheck" required>
+                      <label class="form-check-label" for="invalidCheck">
+                        Declaro que la información brindada es verídica y que acepto las condiciones descritas en el FAQ de Yala
+                      </label>
+                      <div class="invalid-feedback">
+                        Debe aceptar aceptar que la información que brindo es verídica
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="botonSignup">Crear</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          
+
+          <form onsubmit="ingresar(this)">
+            <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body" id ="bodyModalLogin">
+                    <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">@</span>
+                      <input type="text" class="form-control" placeholder="Nombre de usuario" aria-label="Username" aria-describedby="basic-addon1" name="inputUsernameLogin" required>
+                    </div>
+                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                    <div class="input-group mb-3" id="divPassword">
+                      <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-lock" viewBox="0 0 16 16">
+    <path d="M8 5a1 1 0 0 1 1 1v1H7V6a1 1 0 0 1 1-1zm2 2.076V6a2 2 0 1 0-4 0v1.076c-.54.166-1 .597-1 1.224v2.4c0 .816.781 1.3 1.5 1.3h3c.719 0 1.5-.484 1.5-1.3V8.3c0-.627-.46-1.058-1-1.224zM6.105 8.125A.637.637 0 0 1 6.5 8h3a.64.64 0 0 1 .395.125c.085.068.105.133.105.175v2.4c0 .042-.02.107-.105.175A.637.637 0 0 1 9.5 11h-3a.637.637 0 0 1-.395-.125C6.02 10.807 6 10.742 6 10.7V8.3c0-.042.02-.107.105-.175z"/>
+    <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+  </svg></span>
+                      <input type="password" class="form-control" id="exampleInputPassword1" name="inputContraLogin" required>
+                    </div>
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="botonLogin">
+                      Ingresar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          
+          <form onsubmit="crearSubasta(this)" id="formularioSubasta">
+            <div class="modal fade" id="subastaModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear subasta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <label for="inputTitulo" class="form-label">Título</label>
+                    <div class="input-group mb-3" id="basic-addon1">
+                      <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-textarea-t" viewBox="0 0 16 16">
+    <path d="M1.5 2.5A1.5 1.5 0 0 1 3 1h10a1.5 1.5 0 0 1 1.5 1.5v3.563a2 2 0 0 1 0 3.874V13.5A1.5 1.5 0 0 1 13 15H3a1.5 1.5 0 0 1-1.5-1.5V9.937a2 2 0 0 1 0-3.874V2.5zm1 3.563a2 2 0 0 1 0 3.874V13.5a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V9.937a2 2 0 0 1 0-3.874V2.5A.5.5 0 0 0 13 2H3a.5.5 0 0 0-.5.5v3.563zM2 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm12 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+    <path d="M11.434 4H4.566L4.5 5.994h.386c.21-1.252.612-1.446 2.173-1.495l.343-.011v6.343c0 .537-.116.665-1.049.748V12h3.294v-.421c-.938-.083-1.054-.21-1.054-.748V4.488l.348.01c1.56.05 1.963.244 2.173 1.496h.386L11.434 4z"/>
+  </svg></span>
+                      <input type="text" class="form-control" placeholder="Edición especial Spy X Family" aria-label="titulo" aria-describedby="basic-addon1" name="inputTituloSubasta">
+                    </div>
+
+                    <label for="inputDescripcion" class="form-label">Descripción</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-heading" viewBox="0 0 16 16">
+    <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+    <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z"/>
+  </svg></span>
+                      <textarea class="form-control" aria-label="With textarea" placeholder="Una gran descripción..." name="inputDescripcionSubasta"></textarea>
+                    </div>
+
+                    <label for="inputPrecio" class="form-label">Precio base</label>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text" id="basic-addon1">S/.</span>
+                      <input type="number" class="form-control" placeholder="75" aria-label="precio" aria-describedby="basic-addon1" name="inputPrecioSubasta">
+                    </div>
+
+                    <label for="inputFecha" class="form-label">Fecha de termino de subasta</label>
+                    <div class="input-group mb-3" id="basic-addon1">
+                      <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+  </svg></span>
+                      <input type="datetime-local" class="form-control" aria-label="fecha" aria-describedby="basic-addon1" name="inputFechaSubasta">
+                    </div>
+
+                    <label for="inputImagen1Subasta" class="form-label">Imágen 1</label>
+                    <div class="input-group mb-3">
+                      <label class="input-group-text" for="inputImagen1Subasta"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
+    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
+  </svg></label>
+                      <input type="file" class="form-control" id="inputImagen1Subasta" name="inputImagen1Subasta">
+                    </div>
+
+                    <label for="inputImagen2Subasta" class="form-label">Imágen 2</label>
+                    <div class="input-group mb-3">
+                      <label class="input-group-text" for="inputImagen2Subasta"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
+    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
+  </svg></label>
+                      <input type="file" class="form-control" id="inputImagen2Subasta" name="inputImagen2Subasta">
+                    </div>
+
+                    <label for="inputImagen3Subasta" class="form-label">Imágen 3</label>
+                    <div class="input-group mb-3">
+                      <label class="input-group-text" for="inputImagen3Subasta"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
+    <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+    <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
+  </svg></label>
+                      <input type="file" class="form-control" id="inputImagen3Subasta" name="inputImagen3Subasta">
+                    </div>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                      <label class="form-check-label" for="invalidCheck">
+                        Declaro que la información brindada del producto, así como su existencia, es verídica
+                      </label>
+                      <div class="invalid-feedback">
+                        Debe aceptar aceptar que la información que brindó es verídica
+                      </div>
+                    </div>
+                  </div>
+                  <input type="hidden" id="usuarioSubasta" name="usuarioSubasta">
+                  <input type="hidden" id="contrasenaSubasta" name="contrasenaSubasta">
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="botonSubastar">Crear</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </nav>
+
+    <div style="width: 100%; text-align: center; background-color:blueviolet; color:white; padding: 5px">
+        <h2>En Mayo también participa y acumula chances para ganar en los sorteos</h2>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <? data.forEach( row => { ?>
+        <div class="card m-3" style="width: 40%; padding:0px; width: 18rem">
+            <img src="https://drive.google.com/uc?export=download&id=<?!= row[5] ?>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h4>S/. <?!= row[3] ?></h5>
+              <h5 class="card-title"><?!= row[1] ?></h5>
+              <h6 class="card-subtitle mb-2 text-muted">@<?!= row[2] ?></h6>
+              <a href="<?= pubUrl ?>?subasta=<?!= row[0] ?>" class="btn btn-primary">Ver</a>
+            </div>
+        </div>
+        <? }); ?>
+      </div>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </symbol>
+      <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+      </symbol>
+      <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+      </symbol>
+    </svg>
+    <?!= include('JS') ?>
+    <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Yala 2022</p></div>
+        </footer>
+  </body>
+</html>
